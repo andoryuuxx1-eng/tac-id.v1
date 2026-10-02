@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAC-ID • Technology Astronomy Science</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#090018;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(139,92,246,.12),transparent 30%),
+    radial-gradient(circle at 80% 70%,rgba(168,85,247,.1),transparent 30%);
+  z-index:-1;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  padding:18px 7%;
+  background:rgba(9,0,24,.85);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(168,85,247,.2);
+}
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.logo span{
+  color:#a855f7;
+}
+
+nav a{
+  color:#cbd5e1;
+  text-decoration:none;
+  margin-left:22px;
+  font-size:14px;
+}
+
+nav a:hover{
+  color:#c084fc;
+}
+
+/* HERO */
+.hero{
+  min-height:88vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:80px 20px;
+  position:relative;
+}
+
+.stars{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(circle,#fff 1px,transparent 1px),
+    radial-gradient(circle,#a855f7 1px,transparent 1px);
+  background-size:90px 90px,170px 170px;
+  opacity:.2;
+}
+
+.hero-content{
+  position:relative;
+  max-width:850px;
+}
+
+.badge{
+  display:inline-block;
+  padding:12px 22px;
+  border:1px solid rgba(168,85,247,.4);
+  border-radius:30px;
+  background:rgba(88,28,135,.18);
+  color:#c084fc;
+  margin-bottom:30px;
+}
+
+.hero h1{
+  font-size:clamp(48px,10vw,92px);
+  line-height:1;
+  margin-bottom:25px;
+}
+
+.hero h1 span{
+  background:linear-gradient(90deg,#e9d5ff,#a855f7,#d8b4fe);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  color:#aaa3b8;
+  font-size:18px;
+  line-height:1.8;
+  max-width:700px;
+  margin:auto;
+}
+
+.buttons{
+  margin-top:35px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:0;
+  padding:15px 28px;
+  border-radius:14px;
+  color:white;
+  background:linear-gradient(135deg,#9333ea,#7c3aed);
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+.btn.secondary{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(168,85,247,.35);
+}
+
+/* CONTENT */
+section.content{
+  padding:80px 7%;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.title h2{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+.title p{
+  color:#8f879d;
+}
+
+/* CARDS */
+.grid{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  padding:28px;
+  border-radius:22px;
+  background:rgba(22,8,42,.8);
+  border:1px solid rgba(168,85,247,.2);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:#a855f7;
+  box-shadow:0 15px 40px rgba(126,34,206,.18);
+}
+
+.icon{
+  font-size:38px;
+  margin-bottom:18px;
+}
+
+.card h3{
+  color:#d8b4fe;
+  font-size:23px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#aaa3b8;
+  line-height:1.7;
+}
+
+/* STATS */
+.stats{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.stat{
+  text-align:center;
+  padding:35px 20px;
+  border:1px solid rgba(168,85,247,.2);
+  border-radius:22px;
+  background:#100521;
+}
+
+.stat strong{
+  display:block;
+  font-size:42px;
+  color:#c084fc;
+  margin-bottom:8px;
+}
+
+.stat span{
+  color:#91899b;
+}
+
+/* ABOUT */
+.about{
+  max-width:900px;
+  margin:auto;
+  padding:35px;
+  border-radius:25px;
+  background:rgba(22,8,42,.8);
+  border:1px solid rgba(168,85,247,.2);
+}
+
+.about p{
+  color:#aaa3b8;
+  line-height:1.9;
+  font-size:16px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:50px 20px;
+  border-top:1px solid rgba(168,85,247,.15);
+  color:#756d80;
+}
+
+footer strong{
+  color:#a855f7;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  header{
+    padding:16px 20px;
+  }
+
+  nav{
+    display:none;
+  }
+
+  .hero{
+    min-height:85vh;
+  }
+
+  .hero h1{
+    font-size:52px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  section.content{
+    padding:65px 20px;
+  }
+
+  .title h2{
+    font-size:31px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">TAC-<span>ID</span></div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#materi">Materi</a>
+      <a href="#tentang">Tentang</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="stars"></div>
+
+  <div class="hero-content">
+
+    <div class="badge">
+      📚 PERPUSTAKAAN DIGITAL TAC
+    </div>
+
+    <h1>
+      Explore.<br>
+      <span>Learn. Discover.</span>
+    </h1>
+
+    <p>
+      TAC-ID adalah perpustakaan digital untuk mempelajari
+      Technology, Astronomy & Science secara sederhana,
+      terstruktur, dan mudah dipahami.
+    </p>
+
+    <div class="buttons">
+      <a class="btn" href="#materi">🚀 Mulai Eksplorasi</a>
+      <a class="btn secondary" href="#tentang">ℹ️ Tentang TAC</a>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="content" id="materi">
+
+  <div class="title">
+    <h2>Jelajahi Materi</h2>
+    <p>Pilih bidang yang ingin kamu pelajari.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">🌌</div>
+      <h3>Astronomy</h3>
+      <p>
+        Pelajari tata surya, planet, bintang, galaksi,
+        black hole, misi luar angkasa, dan berbagai
+        fenomena alam semesta.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>Technology</h3>
+      <p>
+        Kenali perkembangan teknologi modern,
+        kecerdasan buatan, komputer, smartphone,
+        energi, dan berbagai inovasi terbaru.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🔬</div>
+      <h3>Science</h3>
+      <p>
+        Pelajari konsep-konsep sains seperti fisika,
+        kimia, biologi, serta berbagai fenomena
+        ilmiah di sekitar kita.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="content">
+
+  <div class="title">
+    <h2>TAC dalam Angka</h2>
+    <p>Perjalanan perpustakaan digital TAC.</p>
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      <strong>50+</strong>
+      <span>Materi Astronomy</span>
+    </div>
+
+    <div class="stat">
+      <strong>50+</strong>
+      <span>Materi Technology</span>
+    </div>
+
+    <div class="stat">
+      <strong>50+</strong>
+      <span>Materi Science</span>
+    </div>
+
+    <div class="stat">
+      <strong>V1.0</strong>
+      <span>Versi Website</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="content" id="tentang">
+
+  <div class="title">
+    <h2>Tentang TAC-ID</h2>
+  </div>
+
+  <div class="about">
+
+    <p>
+      TAC merupakan singkatan dari
+      <b>Technology & Astronomy Creator</b>.
+      TAC-ID dibuat sebagai ruang edukasi digital
+      yang membahas teknologi, astronomi, dan sains
+      dengan bahasa yang sederhana dan mudah dipahami.
+    </p>
+
+    <br>
+
+    <p>
+      Tujuannya adalah membuat informasi yang terlihat
+      rumit menjadi lebih menarik, terstruktur, dan
+      mudah dipelajari oleh siapa saja.
+    </p>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+  <strong>TAC-ID</strong><br>
+  Technology • Astronomy • Science<br><br>
+  One Place For Technology, Astronomy & Science
+</footer>
+
+</body>
+</html>
